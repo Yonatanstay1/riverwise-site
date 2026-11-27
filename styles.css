@@ -27,3 +27,68 @@
 @media(max-width:560px){.footer-links a{font-size:14px}}
 .footer-top p{font-size:13px}.footer-top p span{font-size:13px}
 .footer-bottom,.footer-bottom span,.footer-bottom a{font-size:12px}
+/* ===== Sign-up, lesson pages, cheat sheet ===== */
+.section-space-sm{padding-top:20px;padding-bottom:70px}
+.signup{background:var(--green);color:#f3f5e9;border-radius:14px;padding:46px;display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:center}
+.signup .eyebrow{color:var(--lime)}
+.signup h2{color:#fffef8;font-size:clamp(28px,3.4vw,40px);line-height:1.1;margin:10px 0 14px}
+.signup h2 em{font-family:var(--serif);color:var(--lime)}
+.signup p{color:#c9d3c4;font-size:15px;line-height:1.7;margin:0}
+.signup-points{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:8px;font-size:14px;color:#e4ead9}
+.signup-points li{padding-left:22px;position:relative}
+.signup-points li:before{content:'';position:absolute;left:2px;top:7px;width:9px;height:5px;border-left:2px solid var(--lime);border-bottom:2px solid var(--lime);transform:rotate(-45deg)}
+.signup-form{background:#fffef8;color:var(--ink);border-radius:10px;padding:26px;display:grid;gap:12px}
+.signup-label{font-size:13px;font-weight:700;letter-spacing:.02em}
+.signup-row{display:flex;gap:8px;flex-wrap:wrap}
+.signup-row input{flex:1 1 200px;min-height:50px;border:1px solid #c4ccbd;border-radius:8px;padding:0 14px;font:inherit;font-size:16px;background:#fff;color:var(--ink)}
+.signup-row input:focus{outline:3px solid #b9dc6a;border-color:#6f8f3c}
+.signup-row .button{min-height:50px;flex:0 0 auto;border:0;cursor:pointer;font-size:15px}
+.signup-row .button:disabled{opacity:.6;cursor:wait}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.5;color:#3d4a44;cursor:pointer}
+.check input{width:20px;height:20px;margin:1px 0 0;flex:0 0 auto;accent-color:var(--green)}
+.check a{color:var(--green);text-decoration:underline}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.signup-status{margin:0;font-size:14px;color:#2f5b22}
+.signup-status.error{color:#a3361f}
+.signup-done strong{display:block;font-size:20px;margin-bottom:6px;font-family:var(--head)}
+.signup-done p{color:#4a5650!important;font-size:15px!important;margin:0 0 16px!important}
+.signup.compact{margin-top:56px;padding:34px;grid-template-columns:1fr}
+.signup.compact h2{font-size:28px}
+.lesson-links{margin-top:22px;font-size:14px;line-height:2;color:var(--muted)}
+.lesson-links a{color:var(--green);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.crumbs{font-size:14px;color:var(--muted);margin-bottom:22px}
+.crumbs a{color:var(--green);text-decoration:underline}
+.lesson-page .page-body h2{margin-top:34px}
+.lesson-page .lesson-takeaway{margin:34px 0}
+.static-quiz{background:#fffef8;border:1px solid var(--line);border-radius:10px;padding:24px}
+.lesson-pager{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:34px}
+.lesson-pager a{border:1px solid var(--line);border-radius:10px;padding:16px 18px;background:#fffef8;color:var(--ink);text-decoration:none;font-weight:700;font-size:16px}
+.lesson-pager a:hover{border-color:#9fb38f}
+.lesson-pager a.next{text-align:right}
+.lesson-pager small{display:block;font-weight:500;color:var(--muted);font-size:13px;margin-bottom:4px}
+.cheat-actions{margin:6px 0 30px}
+.cheat-actions .button{border:0;cursor:pointer}
+.cheat-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.cheat-grid section{background:#fffef8;border:1px solid var(--line);border-radius:10px;padding:24px}
+.cheat-grid .wide{grid-column:1/-1}
+.cheat-grid h2{font-size:20px;margin:0 0 14px}
+.cheat-ranks{margin:0;padding-left:22px;display:grid;gap:7px;font-size:15px}
+.cheat-ranks span{display:block;color:var(--muted);font-size:14px}
+.cheat-table{width:100%;border-collapse:collapse;font-size:15px;margin:10px 0}
+.cheat-table th,.cheat-table td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+.cheat-table td:last-child{font-weight:700;color:var(--green)}
+.cheat-takeaways{margin:0;padding-left:22px;display:grid;gap:10px;font-size:15px;line-height:1.6}
+.small-note{font-size:13px;color:var(--muted);line-height:1.6;margin-top:16px}
+@media (max-width:800px){
+  .signup{grid-template-columns:1fr;padding:28px 20px;gap:24px;border-radius:12px}
+  .signup-form{padding:20px}
+  .signup-row .button{width:100%;justify-content:center}
+  .cheat-grid{grid-template-columns:1fr}
+  .lesson-pager{grid-template-columns:1fr}
+  .lesson-pager a.next{text-align:left}
+}
+@media print{
+  .site-header,.mobile-nav,footer,.cheat-actions,.skip,#toast{display:none!important}
+  body{background:#fff}
+  .cheat-grid section{break-inside:avoid;border-color:#ccc}
+}
