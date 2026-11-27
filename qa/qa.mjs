@@ -28,8 +28,9 @@ for (const vp of [{ name: 'phone', width: 390, height: 844, mobile: true }, { na
   for (const p of PAGES) { await page.goto(SITE + p); (await page.$$eval('a[href]', as => as.map(a => a.href))).forEach(h => links.add(h.split('#')[0])); }
   for (const l of links) {
     if (l.startsWith('mailto:') || l.startsWith('tel:')) continue;
-    const r = await page.request.get(l, { maxRedirects: 5 }).catch(e => ({ status: () => 0 }));
-    check(`[${vp.name}] link ${l}`, r.status() >= 200 && r.status() < 400, `HTTP ${r.status()}`);
+    const r = await page.request.get(l, { maxRedirects: 5 }).catch(e => ({ status: () => 0, headers: () => ({}) }));
+    const cf = r.status() === 403 && r.headers()['cf-mitigated'] === 'challenge' && !l.startsWith(SITE);
+    check(`[${vp.name}] link ${l}`, (r.status() >= 200 && r.status() < 400) || cf, cf ? 'external site: Cloudflare bot challenge, opens in real browsers' : `HTTP ${r.status()}`);
   }
   // navigation
   await page.goto(SITE, { waitUntil: 'networkidle' });

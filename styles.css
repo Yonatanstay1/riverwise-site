@@ -25,3 +25,5 @@
 .help-grid .contact-card{margin:0}
 @media(max-width:800px){.help-grid{grid-template-columns:1fr}.page{padding-top:32px;padding-bottom:64px}.page-body{font-size:16px}}
 @media(max-width:560px){.footer-links a{font-size:14px}}
+.footer-top p{font-size:13px}.footer-top p span{font-size:13px}
+.footer-bottom,.footer-bottom span,.footer-bottom a{font-size:12px}
