@@ -121,6 +121,8 @@ for (const vp of [{ name: 'phone', width: 390, height: 844, mobile: true }, { na
   await page.locator('#signup').screenshot({ path: `shots/${vp.name}-signup-done.png` });
   await page.click('#signup .signup-done a'); await page.waitForURL(/cheat-sheet/);
   check(`[${vp.name}] sign-up → cheat sheet opens`, (await page.innerText('h1')).includes('cheat sheet'));
+  const rows = await page.$$eval('.cheat-table tbody tr', trs => trs.map(tr => [...tr.cells].map(c => c.textContent)));
+  check(`[${vp.name}] cheat sheet pot odds match calculator formula`, rows.length === 6 && rows.every(([p, c, n]) => Math.abs(parseFloat(n) - (+c / (+p + 2 * +c) * 100)) < 0.06), JSON.stringify(rows));
   await page.goto(SITE + `lessons/${LESSONS[0].slug}.html`);
   check(`[${vp.name}] lesson page has sign-up form`, (await page.$('form[data-signup="lesson-1"]')) !== null);
   const og = await page.request.get(SITE + 'og.png');
