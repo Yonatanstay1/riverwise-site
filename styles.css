@@ -92,3 +92,4 @@
   body{background:#fff}
   .cheat-grid section{break-inside:avoid;border-color:#ccc}
 }
+@media (max-width:800px){.site-header .button.small{min-height:44px;padding:10px 15px}.menu-toggle{min-width:44px;min-height:44px}}

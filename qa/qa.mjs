@@ -114,6 +114,7 @@ for (const vp of [{ name: 'phone', width: 390, height: 844, mobile: true }, { na
   await page.check(`${f} input[name=consent]`); mode = 'fail'; await page.click(`${f} button[type=submit]`);
   await page.waitForFunction(s => /didn’t go through/.test(document.querySelector(s)?.textContent || ''), st);
   check(`[${vp.name}] sign-up: server error shown, button re-enabled`, !(await page.isDisabled(`${f} button[type=submit]`)));
+  for (let k = errors.length - 1; k >= 0; k--) if (/status of 500/.test(errors[k])) errors.splice(k, 1); // our own simulated failure
   mode = 'ok'; posted = null; await page.click(`${f} button[type=submit]`);
   await page.waitForSelector('#signup .signup-done');
   check(`[${vp.name}] sign-up: success sends email + 18+ + consent + source`, posted && posted.email === 'qa.test@example.com' && posted.confirmed_18_plus === 'yes' && posted.email_consent === 'yes' && posted.source === 'home', JSON.stringify(posted).slice(0, 200));
