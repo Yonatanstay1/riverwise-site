@@ -57,7 +57,7 @@ for (const vp of [{ name: 'phone', width: 390, height: 844, mobile: true }, { na
     const fb = await page.isVisible('.quiz-feedback');
     if (i === 0) await page.screenshot({ path: `shots/${vp.name}-lesson.png` });
     await page.click('.complete-lesson');
-    await page.waitForSelector('#content-dialog:not([open])');
+    await page.waitForSelector('#content-dialog', { state: 'hidden' });
     check(`[${vp.name}] lesson ${i + 1} opens, quiz answers, completes`, t.length > 400 && fb);
   }
   check(`[${vp.name}] progress shows 6 of 6`, (await page.innerText('#lesson-progress')).startsWith('6 of 6'));
