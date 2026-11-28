@@ -95,3 +95,4 @@
 @media (max-width:800px){.site-header .button.small{min-height:44px;padding:10px 15px}.menu-toggle{min-width:44px;min-height:44px}}
 .signup-submit{width:100%;justify-content:center;min-height:52px;border:0;cursor:pointer;font-size:16px;margin-top:4px}
 .signup-submit:disabled{opacity:.6;cursor:wait}
+.footer-top p .footer-mail{color:#5d6b58}.footer-mail a{color:var(--green);text-decoration:underline;text-underline-offset:2px;word-break:break-all}
