@@ -20,7 +20,7 @@ for (const vp of [{ name: 'phone', width: 390, height: 844, mobile: true }, { na
     const sw = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     check(`[${vp.name}] ${p || 'home'} no sideways scroll`, sw <= 1, `overflow ${sw}px`);
     const body = await page.innerText('body');
-    check(`[${vp.name}] ${p || 'home'} no placeholder copy`, !/prototype|\bMVP\b|private preview|lorem|888/i.test(body));
+    check(`[${vp.name}] ${p || 'home'} no placeholder copy`, !/prototype|\bMVP\b|private preview|lorem|888|riverwise/i.test(body));
     const seo = await page.evaluate(() => ({ t: document.title, d: document.querySelector('meta[name=description]')?.content || '', c: document.querySelector('link[rel=canonical]')?.href || '', h1: document.querySelectorAll('h1').length }));
     check(`[${vp.name}] ${p || 'home'} title, description, canonical, one h1`, seo.t.length > 10 && seo.d.length > 50 && seo.c.startsWith('https://sopavo.com/') && seo.h1 === 1, JSON.stringify(seo).slice(0, 160));
     const small = await page.$$eval('input:not(.hp):not([type=checkbox]), button, .button', els => els.filter(e => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0 && r.height < 40; }).map(e => (e.textContent || e.name || '').trim().slice(0, 20)));

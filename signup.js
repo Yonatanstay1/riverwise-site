@@ -1,5 +1,5 @@
 'use strict';
-// Email sign-up (lead capture). Delivery: FormSubmit (no server) to the Riverwise inbox.
+// Email sign-up (lead capture). Delivery: FormSubmit (no server) to the Sopavo inbox.
 // The first ever submission makes FormSubmit email the inbox an "Activate" link.
 (function () {
   const INBOX = 'yonatanzlit@stayinnovation.com';
@@ -21,7 +21,7 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
           body: JSON.stringify({
-            _subject: `Riverwise sign-up: ${email}`, _template: 'table', _captcha: 'false',
+            _subject: `Sopavo sign-up: ${email}`, _template: 'table', _captcha: 'false',
             email, confirmed_18_plus: 'yes', email_consent: 'yes',
             source: form.dataset.signup, page: location.pathname, signed_up_at: new Date().toISOString()
           })
